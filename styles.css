@@ -4,13 +4,14 @@
     --accent-orange: #FE8A01;
     --dark-gray: #38322F;
     --darker-gray: #111111;
+    --dark-red: #8b0000;
 
     --button-border-radius: 10px;
+    --medium: 500;
 }
 
 body {
     margin: 0;
-    padding: 0;
     font-family: 'Montserrat', sans-serif;
     height: 100vh;
     display: grid;
@@ -40,12 +41,6 @@ header > p {
     padding: 0;
 }
 
-/* HEADER CSS */
-
-main {
-    padding: 50px;
-}
-
 #add_book_button {
     height: min-content;
     width: min-content;
@@ -57,4 +52,69 @@ main {
     padding: 15px 40px;
     align-self: center;
     justify-content: center;
+}
+
+/* HEADER CSS */
+
+main {
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+}
+
+#books {
+    width: 75%;
+    justify-content: center;
+}
+
+.books_grid_header {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-bottom: solid 2px var(--darker-gray);
+}
+
+.book_information {
+    text-align: center;
+    align-self: center;
+}
+
+.grid_header {
+    font-weight: var(--medium);
+    text-align: center;
+}
+
+.book_list {
+    grid-column: 1 / 5;
+    display: inherit;
+}
+
+.book {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-bottom: solid 1px var(--darker-gray);
+    padding: 5px 0 ;
+}
+
+.book_buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.book_button {
+    align-self: center;
+    height: min-content;
+    padding: 10px 20px;
+    border-style: none;
+    border-radius: var(--button-border-radius);
+    background-color: var(--accent-orange);
+}
+
+#finished_button, #delete_button {
+    color: white;
+}
+
+#delete_button {
+    background-color: var(--dark-red);
 }
