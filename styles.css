@@ -4,6 +4,8 @@
     --accent-orange: #FE8A01;
     --dark-gray: #38322F;
     --darker-gray: #111111;
+
+    --button-border-radius: 10px;
 }
 
 body {
@@ -22,8 +24,11 @@ header {
     grid-row: 1 / 2;
     background-color: var(--background-gray);
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding-left: 50px;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px 50px;
     box-shadow: 0px 5px 5px rgb(0 0 0 / 0.2);
 }
 
@@ -36,3 +41,20 @@ header > p {
 }
 
 /* HEADER CSS */
+
+main {
+    padding: 50px;
+}
+
+#add_book_button {
+    height: min-content;
+    width: min-content;
+    font-size: 1.5rem;
+    background-color: var(--accent-orange);
+    color: var(--dark-gray);
+    border-style: none;
+    border-radius: var(--button-border-radius);
+    padding: 15px 40px;
+    align-self: center;
+    justify-content: center;
+}
