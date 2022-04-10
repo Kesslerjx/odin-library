@@ -41,7 +41,7 @@ header > p {
     padding: 0;
 }
 
-#add_book_button {
+#show_form_button {
     height: min-content;
     width: min-content;
     font-size: 1.5rem;
@@ -65,6 +65,38 @@ main {
 #books {
     width: 75%;
     justify-content: center;
+}
+
+#book_form {
+    width: 300px;
+    justify-content: center;
+    
+}
+
+#book_form > form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#book_form > form > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#finished_label {
+    font-size: 1.2rem;
+}
+
+#book_finished {
+    width: 25px;
+    height: 25px;
+}
+
+#book_form input {
+    padding: 15px;
+    font-size: 1.2rem;
 }
 
 .books_grid_header {
@@ -109,6 +141,12 @@ main {
     border-style: none;
     border-radius: var(--button-border-radius);
     background-color: var(--accent-orange);
+}
+
+#add_book_button {
+    background-color: var(--accent-orange);
+    border-radius: var(--button-border-radius);
+    border-style: none;
 }
 
 #finished_button, #delete_button {

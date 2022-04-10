@@ -15,17 +15,26 @@
 
     <header>
         <p>Your Library</p>
-        <input type="button" value="Add Book" id="add_book_button">
+        <input type="button" value="Show Form" id="show_form_button">
     </header>
 
     <main>
 
         <!-- HIDE BOOK FORM UNTIL BUTTON IS PRESSED -->
-        <div id="book_form" style="display: none;">
-
+        <div id="book_form">
+            <form action="">
+                <input type="text" placeholder="Book Title..." id="book_title">
+                <input type="text" placeholder="Book Author..." id="book_author">
+                <input type="number" placeholder="Number of Pages..." id="book_pages">
+                <div>
+                    <label for="book_finished" id="finished_label"> Finished</label>
+                    <input type="checkbox" name="book_finished" id="book_finished">
+                </div>
+                <input type="button" value="Add Book" id="add_book_button">
+            </form>
         </div>
 
-        <div id="books">
+        <div id="books"  style="display: none;">
             <div class="books_grid_header">
                 <p class="grid_header">Title</p>
                 <p class="grid_header">Author</p>
