@@ -58,17 +58,56 @@ function addBook() {
     //Create new object
     let book = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.checked);
 
+    //Add to library
+    library.push(book);
+
     //Add to book list
-    bookList.appendChild(book.getBookListItem());
+    updateBookList();
+}
+
+function finishBook(event) {
+    console.log(this);
+    //Get book div
+    let bookDiv = this.parentNode.parentNode; 
+
+    //Get index
+    let index = Array.from(bookList.childNodes).indexOf(bookDiv);
+
+    //Set to opposite
+    if(library[index].read === false) {
+        library[index].read = true;
+    } else {
+        library[index].read = false;
+    }
+
+    //Update list
+    updateBookList();
+
+}
+
+function deleteBook() {
+
+}
+
+function updateBookList() {
+
+    //Remove child elements
+    while(bookList.firstChild) {
+        bookList.removeChild(bookList.firstChild);
+    }
+
+    //Loop through library and update book list
+    library.forEach(book => bookList.append(book.getBookListItem()));
 }
 
 // Objects \\
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, read, html) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.html = html;
 }
 
 Book.prototype.getBookListItem = function () {
@@ -100,14 +139,16 @@ Book.prototype.getBookListItem = function () {
     //Create buttons and add to buttons div
     let finishedButton = document.createElement('input');
     finishedButton.type = 'button';
-    finishedButton.value = "Finish";
+    finishedButton.value = this.read ? "Undo" : "Finish";
     finishedButton.classList.add('book_button');
 
     let deleteButton = document.createElement('input');
     deleteButton.type = 'button';
     deleteButton.value = "Delete";
-    deleteButton.style 
     deleteButton.classList.add('book_button');
+
+    finishedButton.addEventListener('click', finishBook);
+    deleteButton.addEventListener('click', deleteBook);
 
     buttonsDiv.appendChild(finishedButton);
     buttonsDiv.appendChild(deleteButton);
