@@ -4,7 +4,6 @@
     --accent-orange: #FE8A01;
     --dark-gray: #38322F;
     --darker-gray: #111111;
-    --dark-red: #8b0000;
 
     --button-border-radius: 10px;
     --medium: 500;
@@ -147,12 +146,4 @@ main {
     background-color: var(--accent-orange);
     border-radius: var(--button-border-radius);
     border-style: none;
-}
-
-#finished_button, #delete_button {
-    color: white;
-}
-
-#delete_button {
-    background-color: var(--dark-red);
 }
