@@ -66,12 +66,8 @@ function addBook() {
 }
 
 function finishBook(event) {
-    console.log(this);
-    //Get book div
-    let bookDiv = this.parentNode.parentNode; 
-
     //Get index
-    let index = Array.from(bookList.childNodes).indexOf(bookDiv);
+    let index = getBookIndex(this);
 
     //Set to opposite
     if(library[index].read === false) {
@@ -85,8 +81,23 @@ function finishBook(event) {
 
 }
 
-function deleteBook() {
+function deleteBook(event) {
+    
+    //Get index
+    let index = getBookIndex(this);
 
+    //Remove book from library and list
+    library.pop(index);
+    bookList.removeChild(bookList.children[index]);
+}
+
+//Gets the index of the book in the book list
+function getBookIndex(element) {
+    //Get book div
+    let bookDiv = element.parentNode.parentNode; 
+
+    //Get index
+    return Array.from(bookList.childNodes).indexOf(bookDiv);
 }
 
 function updateBookList() {
