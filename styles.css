@@ -147,3 +147,7 @@ main {
     border-radius: var(--button-border-radius);
     border-style: none;
 }
+
+#error_message {
+    text-align: center;
+}

@@ -11,6 +11,7 @@ var bookTitle = document.getElementById('book_title');
 var bookAuthor = document.getElementById('book_author');
 var bookPages = document.getElementById('book_pages');
 var bookRead = document.getElementById('book_finished');
+var errorMessage = document.getElementById('error_message');
 
 //Event listeners
 showFormButton.addEventListener('click', showForm);
@@ -32,10 +33,12 @@ function showForm() {
     }
 }
 
+//Validates the form
 function checkForm() {
     //Check if they're empty
     if(bookTitle.value === '' || bookAuthor.value === '' || bookPages.value === '') {
-        //Do something here   
+        //Do something here
+        errorMessage.textContent = "There was an issue adding the book";   
     } else {
         //Create a book object and add to library
         addBook();
@@ -47,13 +50,16 @@ function checkForm() {
     }
 }
 
+//Clears the form to reset it
 function clearForm() {
     bookTitle.value = '';
     bookAuthor.value = '';
     bookPages.value = '';
     bookRead.checked = false;
+    errorMessage.textContent = '';
 }
 
+//Adds a book to the library
 function addBook() {
     //Create new object
     let book = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.checked);
@@ -65,6 +71,7 @@ function addBook() {
     updateBookList();
 }
 
+//Sets the book to being finished
 function finishBook(event) {
     //Get index
     let index = getBookIndex(this);
@@ -81,6 +88,7 @@ function finishBook(event) {
 
 }
 
+//Deletes a book
 function deleteBook(event) {
     
     //Get index
@@ -100,6 +108,8 @@ function getBookIndex(element) {
     return Array.from(bookList.childNodes).indexOf(bookDiv);
 }
 
+//Updates the elements in the book list
+//Pretty sure this could be done in a better way, but I'm not sure how
 function updateBookList() {
 
     //Remove child elements
