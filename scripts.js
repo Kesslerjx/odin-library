@@ -118,64 +118,65 @@ function updateBookList() {
     }
 
     //Loop through library and update book list
-    library.forEach(book => bookList.append(book.getBookListItem()));
+    library.forEach(book => bookList.append(book.getListItem()));
 }
 
-// Objects \\
+//CLASSES
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 
-function Book(title, author, pages, read, html) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.html = html;
-}
+    //FUNCTIONS
+    getListItem() {
+        //Create book div
+        let bookDiv = document.createElement('div');
+        bookDiv.classList.add('book');
 
-Book.prototype.getBookListItem = function () {
-    //Create book div
-    let bookDiv = document.createElement('div');
-    bookDiv.classList.add('book');
+        //Create p elements with information and classes
+        let title = document.createElement('p');
+        title.textContent = this.title;
+        title.classList.add('book_information');
 
-    //Create p elements with information and classes
-    let title = document.createElement('p');
-    title.textContent = this.title;
-    title.classList.add('book_information');
+        let author = document.createElement('p');
+        author.textContent = this.author;
+        author.classList.add('book_information');
 
-    let author = document.createElement('p');
-    author.textContent = this.author;
-    author.classList.add('book_information');
+        let pages = document.createElement('p');
+        pages.textContent = this.pages;
+        pages.classList.add('book_information');
 
-    let pages = document.createElement('p');
-    pages.textContent = this.pages;
-    pages.classList.add('book_information');
+        let read = document.createElement('p');
+        read.textContent = this.read;
+        read.classList.add('book_information');
 
-    let read = document.createElement('p');
-    read.textContent = this.read;
-    read.classList.add('book_information');
+        //Create div for buttons
+        let buttonsDiv = document.createElement('div');
+        buttonsDiv.classList.add('book_buttons');
 
-    //Create div for buttons
-    let buttonsDiv = document.createElement('div');
-    buttonsDiv.classList.add('book_buttons');
+        //Create buttons and add to buttons div
+        let finishedButton = document.createElement('input');
+        finishedButton.type = 'button';
+        finishedButton.value = this.read ? "Undo" : "Finish";
+        finishedButton.classList.add('book_button');
 
-    //Create buttons and add to buttons div
-    let finishedButton = document.createElement('input');
-    finishedButton.type = 'button';
-    finishedButton.value = this.read ? "Undo" : "Finish";
-    finishedButton.classList.add('book_button');
+        let deleteButton = document.createElement('input');
+        deleteButton.type = 'button';
+        deleteButton.value = "Delete";
+        deleteButton.classList.add('book_button');
 
-    let deleteButton = document.createElement('input');
-    deleteButton.type = 'button';
-    deleteButton.value = "Delete";
-    deleteButton.classList.add('book_button');
+        finishedButton.addEventListener('click', finishBook);
+        deleteButton.addEventListener('click', deleteBook);
 
-    finishedButton.addEventListener('click', finishBook);
-    deleteButton.addEventListener('click', deleteBook);
+        buttonsDiv.appendChild(finishedButton);
+        buttonsDiv.appendChild(deleteButton);
 
-    buttonsDiv.appendChild(finishedButton);
-    buttonsDiv.appendChild(deleteButton);
+        //Adds everything to book div
+        bookDiv.append(title, author, pages, read, buttonsDiv);
 
-    //Adds everything to book div
-    bookDiv.append(title, author, pages, read, buttonsDiv);
-
-    return bookDiv;
+        return bookDiv;
+    }
 }
